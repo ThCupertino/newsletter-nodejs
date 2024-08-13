@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-mails cadastrados</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>E-mails cadastrados em nossa newsletter: </h2>  
+    <ul>
+      <% if (emails.length === 0) { %>
+        <li>Por enquanto, nenhum email foi cadastrado.</li>
+      <% } %>
+        <% emails.forEach(email => { %>
+          <li>
+              <%= email %>
+              <form action="/emails/delete" method="POST">
+                <input type="hidden" name="email" value="<%= email %>">
+                <button type="submit" class="btn-delete">Excluir</button>
+              </form>
+          </li>
+      <% }); %>
+    </ul>
+    <a href="/">Voltar para página inicial.</a>
+  </div>
+</body>
+</html>
